@@ -1,5 +1,5 @@
 {
-    "name": "gbro115/twinjet-directconnect-php",
+    "name": "neurochems/twinjet-directconnect-php8",
     "type": "project",
     "description": "PHP client for the TwinJet DirectConnect API",
     "keywords": [
@@ -12,12 +12,17 @@
             "name": "George Brownlee",
             "homepage": "https://github.com/gbro115",
             "role": "Developer"
+        },
+        {
+            "name": "Brendy Lehman",
+            "homepage": "https://github.com/neurochems",
+            "role": "Maintainer"
         }
     ],
     "repositories":[
         {
             "type": "vcs",
-            "url": "git@github.com:gbro115/twinjet-directconnect-php.git"
+            "url": "git@github.com:neurochems/twinjet-directconnect-php8.git"
         }
     ],
     "license": "MIT",
@@ -27,12 +32,12 @@
         }
     },
     "require": {
-        "php": "^7.3",
-        "psr/log": "^1.0.1",
-        "guzzlehttp/guzzle": "^6.5|^7.0",
+        "php": "^8.0",
+        "psr/log": "^3.0",
+        "guzzlehttp/guzzle": "^7.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^12.0"
     }
 }
