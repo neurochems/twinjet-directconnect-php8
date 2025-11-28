@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="twinjet-directconnect-php" default="composer">
+<project name="twinjet-directconnect-php8" default="composer">
     <property name="composer" value="/usr/local/bin/composer"/>
     <target name="php-check">
         <condition property="php" value="php">

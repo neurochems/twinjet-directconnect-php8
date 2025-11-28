@@ -3,8 +3,9 @@ vendor
 .DS_Store
 composer.lock
 .idea/vcs.xml
-.idea/twinjet-directconnect-php.iml
+.idea/twinjet-directconnect-php8.iml
 .idea/php.xml
 .idea/modules.xml
 .idea/misc.xml
 .phpunit.result.cache
+.phpunit.cache
