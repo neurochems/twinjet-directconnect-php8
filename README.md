@@ -2,6 +2,7 @@ TwinJet Direct Connect PHP API
 ==================
 
 Composer-ready PHP wrapper for [TwinJet DirectConnect](https://twinjet.co/developer/).
+Updated dependencies in 2025 to support PHP 8, etc.
 
 Implemented calls:
 1. Create Job
@@ -19,7 +20,7 @@ The recommended way to install the library is using [Composer](https://getcompos
 ```json
 {
     "require": {
-        "gbro115/twinjet-directconnect-php": "^1.1"
+        "neurochems/twinjet-directconnect-php8": "^1.0"
     }
 }
 ```
