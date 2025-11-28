@@ -1,7 +1,7 @@
 {
     "name": "neurochems/twinjet-directconnect-php8",
     "type": "project",
-    "description": "PHP client for the TwinJet DirectConnect API",
+    "description": "PHP client for the TwinJet DirectConnect API (updated 2025). Fork of gbro115/twinjet-directconnect-php.",
     "keywords": [
         "API",
         "TwinJet",
