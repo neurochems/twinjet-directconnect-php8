@@ -23,7 +23,7 @@ class JobItem implements JsonSerializable
      *
      * @return integer
      */
-    public function getQuantity(): integer
+    public function getQuantity(): int
     {
         return $this->_quantity;
     }
@@ -83,7 +83,7 @@ class JobItem implements JsonSerializable
      *
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         if(is_null($this->_quantity))
         {

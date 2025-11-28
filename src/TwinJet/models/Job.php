@@ -588,7 +588,7 @@ class Job implements JsonSerializable
      * $this->lastEaten->format(DateTime::ISO8601)
      *
      */
-    public function jsonSerialize()
+    public function jsonSerialize() : mixed
     {
         if (is_null($this->isLive()) ||
             is_null($this->_apiToken) ||

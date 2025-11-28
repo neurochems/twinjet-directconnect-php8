@@ -222,7 +222,7 @@ class Address implements JsonSerializable
      *
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize() : mixed
     {
         if(is_null($this->_streetAddress) || is_null($this->_state) || is_null($this->_city) || is_null($this->_zipCode))
         {

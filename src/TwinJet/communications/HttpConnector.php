@@ -5,6 +5,7 @@ namespace TwinJet\communications;
 use \GuzzleHttp\Client;
 use \GuzzleHttp\Exception\ConnectException;
 use \GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 use TwinJet\ApiException;
 use TwinJet\ConnectorException;
 
@@ -18,33 +19,33 @@ class HttpConnector {
     /**
      * processRequest() function - Public facing function to send a request to an endpoint.
      *
-     * @param string $http_method HTTP method to use (defaults to GET if $data==null; defaults to PUT if $data!=null)
-     * @param string $endpoint Incoming API Endpoint
-     * @param array $data Data for POST requests, not needed for GETs
-     * @return    array    Parsed API response from private request method
+     * @param string $method HTTP method to use (defaults to GET if $data==null; defaults to PUT if $data!=null)
+     * @param string $uri Incoming API Endpoint
+     * @param array|null $data Data for POST requests, not needed for GETs
+     * @return array Parsed API response from private request method
      * @throws ApiException
      * @throws ConnectorException
      * @access    public
      */
-    public function processRequest($http_method, $endpoint, $data)
+    public function processRequest($method, $uri, $data)
     {
-        return $this->request($http_method, $endpoint, $data);
+        return $this->request($method, $uri, $data);
     }
 
 
     /**
      * request() function - Internal function to send a request to an endpoint.
      *
-     * @param	string|null	$http_method HTTP method to use (defaults to GET if $data==null; defaults to POST if $data!=null)
-     * @param	string $url	Incoming API Endpoint
-     * @param	array|null	$data Data for POST requests, not needed for GETs
+     * @param	string $method HTTP method to use (defaults to GET if $data==null; defaults to POST if $data!=null)
+     * @param	string $uri Incoming API Endpoint
+     * @param	array|null $data Data for POST requests, not needed for GETs
      * @access	private
      * @return	array Parsed API response
      *
      * @throws ApiException
      * @throws ConnectorException
      */
-    private function request($http_method = 'GET', $url, $data = NULL)
+    private function request($method, $uri, $data = NULL)
     {
         $client = new Client();
 
@@ -53,17 +54,23 @@ class HttpConnector {
             'headers' => array(
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
-            )
+            ),
+            'verify' => 'vendor\composer\ca-bundle\res\cacert.pem'  // updating guzzle format 2025
         );
 
-        if( !is_null($data))
+        if ( !is_null($data) )
         {
             $options['body'] = json_encode($data);
+        }
+        else
+        {
+            $method = 'GET';
         }
 
         try
         {
-            $response = $client->request($http_method, $url, $options);
+            $request = new Request($method, $uri);                 // updating guzzle format 2025
+            $response = $client->sendAsync($request, $options)->wait();
         }
         catch (RequestException | ConnectException $e)
         {
